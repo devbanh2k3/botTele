@@ -1,8 +1,9 @@
 const { Telegraf } = require("telegraf");
-
+const http = require('http');
 var express = require('express');
 var app = express();
 
+const server = http.createServer(app);
 app.get('/', function (req, res) {
     const YOUR_TOKEN = "5803340495:AAHIYg7BiyUFNTSZ7QbAUHN_ZiqOHwRA_Xw";
     const bot = new Telegraf(YOUR_TOKEN);
@@ -21,14 +22,10 @@ app.get('/', function (req, res) {
     bot.launch();
 
 })
-
-var server = app.listen(8081, function () {
-
-    var host = server.address().address
-    var port = server.address().port
-
-    console.log("Ung dung Node.js dang lang nghe tai dia chi: http://%s:%s", host, port)
-
+let port = 8900;
+server.listen(port, () => {
+    //callback
+    console.log("Backend Nodejs is running on the port: " + port);
 })
 
 
