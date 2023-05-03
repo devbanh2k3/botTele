@@ -22,7 +22,7 @@ app.get('/', function (req, res) {
     bot.launch();
 
 })
-let port = 8900;
+let port = process.env.PORT || 8900;
 server.listen(port, () => {
     //callback
     console.log("Backend Nodejs is running on the port: " + port);
